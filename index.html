@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho 2025 - Projetos Selecionados em Programação</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .header .year {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #e74c3c;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .category {
+            background: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-header {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px 30px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .category-description {
+            padding: 20px 30px;
+            background: rgba(52, 152, 219, 0.1);
+            font-size: 1rem;
+            color: #2c3e50;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.2);
+        }
+
+        .projects-grid {
+            padding: 30px;
+        }
+
+        .project {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .project:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            border-color: #667eea;
+        }
+
+        .project:last-child {
+            margin-bottom: 0;
+        }
+
+        .student-info {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .student-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .instructions {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .instructions h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .instructions p {
+            margin: 5px 0;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .project-embed {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px dashed #dee2e6;
+        }
+
+        .project-embed iframe {
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            height: 450px;
+            min-width: 500px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer p {
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-left: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .header .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .header .year {
+                font-size: 1.5rem;
+            }
+
+            .category-header {
+                font-size: 1.2rem;
+                padding: 20px 25px;
+            }
+
+            .category-description {
+                padding: 15px 25px;
+                font-size: 0.95rem;
+            }
+
+            .projects-grid {
+                padding: 20px;
+            }
+
+            .project {
+                padding: 20px;
+            }
+
+            .student-name {
+                font-size: 1.2rem;
+            }
+
+            .project-embed iframe {
+                width: 100%;
+                min-width: 320px;
+                max-width: 500px;
+                height: 380px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 25px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .project-embed iframe {
+                min-width: 300px;
+                max-width: 100%;
+                height: 320px;
+            }
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🏆 Agrinho</h1>
+            <p class="subtitle">Projetos Selecionados - Categoria Programação</p>
+            <p class="year">2025</p>
+        </header>
+
+        <main>
+            <section class="category">
+                <div class="category-header">
+                    📚 Subcategoria 1: Linguagem Scratch (6º e 7º anos)
+                    <span class="badge">1 Projeto</span>
+                </div>
+                <div class="category-description">
+                    Direcionada a estudantes matriculados na unidade curricular de Programação e Robótica de 6° e 7° anos do Ensino Fundamental das Escolas em Tempo Integral e Colégios Cívico-Militares e estudantes do 6º e 7º anos do Ensino Fundamental matriculados no Programa de Ampliação de Jornada - Programa Edutech/Games e Programação.
+                </div>
+                <div class="projects-grid">
+                    <div class="project">
+                        <div class="student-info">
+                            <div class="student-name">👩‍💻 LORENA DE OLIVEIRA TOMAZ</div>
+                            <div class="student-class">7º Ano B</div>
+                        </div>
+                        <div class="instructions">
+                            <h3>🎮 Instruções</h3>
+                            <p>>>> Use as teclas A e D do teclado para mover o personagem lateralmente e coletar as melâncias.</p>
+                        </div>
+                        <div class="project-embed">
+                            <iframe src="https://scratch.mit.edu/projects/1189736707/embed" 
+                                    allowtransparency="true" 
+                                    width="600" 
+                                    height="450" 
+                                    frameborder="0" 
+                                    scrolling="no" 
+                                    allowfullscreen
+                                    title="Projeto Scratch - Lorena de Oliveira Tomaz">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="category">
+                <div class="category-header">
+                    🎮 Subcategoria 2: Linguagem Scratch (8º e 9º anos)
+                    <span class="badge">3 Projetos</span>
+                </div>
+                <div class="category-description">
+                    Direcionada a estudantes matriculados na unidade curricular de Programação e Robótica de 8º e 9º anos do Ensino Fundamental das Escolas em Tempo Integral e dos Colégios Cívico-Militares e estudantes matriculados em Pensamento Computacional do 8º ano do Ensino Fundamental Regular.
+                </div>
+                <div class="projects-grid">
+                    <div class="project">
+                        <div class="student-info">
+                            <div class="student-name">👨‍💻 MATHEUS LAIDANE RODRIGUES ANTUNES</div>
+                            <div class="student-class">8º Ano A</div>
+                        </div>
+                        <div class="instructions">
+                            <h3>🎮 Instruções</h3>
+                            <p>>>> Use as setas do teclado para mover o personagem lateralmente e coletar as frutas.</p>
+                            <p>>>> Ao final, uma pergunta será apresentada. Clique na resposta correta para avançar. Caso erre, tente novamente!</p>
+                        </div>
+                        <div class="project-embed">
+                            <iframe src="https://scratch.mit.edu/projects/1177486797/embed" 
+                                    allowtransparency="true" 
+                                    width="600" 
+                                    height="450" 
+                                    frameborder="0" 
+                                    scrolling="no" 
+                                    allowfullscreen
+                                    title="Projeto Scratch - Matheus Laidane Rodrigues Antunes">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <div class="project">
+                        <div class="student-info">
+                            <div class="student-name">👩‍💻 RENATA LIMA DA SILVA</div>
+                            <div class="student-class">8º Ano B</div>
+                        </div>
+                        <div class="instructions">
+                            <h3>🎮 Instruções</h3>
+                            <p>>>> Use as setas do teclado para mover o personagem e coletar as frutas.</p>
+                        </div>
+                        <div class="project-embed">
+                            <iframe src="https://scratch.mit.edu/projects/1175162178/embed" 
+                                    allowtransparency="true" 
+                                    width="600" 
+                                    height="450" 
+                                    frameborder="0" 
+                                    scrolling="no" 
+                                    allowfullscreen
+                                    title="Projeto Scratch - Renata Lima da Silva">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <div class="project">
+                        <div class="student-info">
+                            <div class="student-name">👨‍💻 EMMANUEL MELLO MENDES</div>
+                            <div class="student-class">9º Ano C</div>
+                        </div>
+                        <div class="instructions">
+                            <h3>🎮 Instruções</h3>
+                            <p>>>> Use as setas do teclado ou as teclas W, A, S, D para movimentar o personagem.</p>
+                            <p>>>> Pressione a tecla E para interagir com objetos ou personagens durante o jogo.</p>
+                        </div>
+                        <div class="project-embed">
+                            <iframe src="https://scratch.mit.edu/projects/1175732831/embed" 
+                                    allowtransparency="true" 
+                                    width="600" 
+                                    height="450" 
+                                    frameborder="0" 
+                                    scrolling="no" 
+                                    allowfullscreen
+                                    title="Projeto Scratch - Emmanuel Mello Mendes">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>🌟 Parabéns a todos os estudantes selecionados! Continuem programando e criando! 🌟</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Agrinho 2025 - Categoria Programação</p>
+        </footer>
+    </div>
+
+    <script>
+        // Adiciona animação suave ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            const projects = document.querySelectorAll('.project');
+            projects.forEach((project, index) => {
+                project.style.opacity = '0';
+                project.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    project.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    project.style.opacity = '1';
+                    project.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+
+        // Adiciona loading para iframes
+        document.querySelectorAll('iframe').forEach(iframe => {
+            iframe.addEventListener('load', function() {
+                this.style.opacity = '1';
+            });
+            iframe.style.opacity = '0.7';
+            iframe.style.transition = 'opacity 0.3s ease';
+        });
+    </script>
+</body>
+</html>
