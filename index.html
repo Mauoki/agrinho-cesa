@@ -1,428 +1,634 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrinho 2025 - Projetos Selecionados em Programação</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agrinho 2025 — Projetos Selecionados em Programação</title>
+<meta name="description" content="Catálogo dos projetos selecionados na categoria Programação do Agrinho 2025.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:        #f1ead9;
+    --paper-deep:   #e6dec8;
+    --ink:          #1b1f15;
+    --green:        #2c4827;
+    --green-deep:   #14211a;
+    --terracotta:   #b8552f;
+    --ochre:        #d99a35;
+    --rule:         #1b1f15;
+  }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+    position:relative;
+  }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+  /* paper grain overlay */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:50;
+    opacity:.5;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.12 0 0 0 0 0.08 0 0 0 0.18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
 
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-        }
+  /* margin tick marks like an old print layout */
+  body::after{
+    content:"";
+    position:fixed;
+    top:0; bottom:0;
+    left:24px;
+    width:1px;
+    background:repeating-linear-gradient(to bottom, transparent 0 14px, rgba(27,31,21,.18) 14px 15px);
+    z-index:1;
+    pointer-events:none;
+  }
+  @media(max-width:760px){body::after{display:none}}
 
-        .header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+  .frame{
+    max-width:1280px;
+    margin:0 auto;
+    padding:24px 48px 80px;
+    position:relative;
+    z-index:2;
+  }
 
-        .header .subtitle {
-            font-size: 1.3rem;
-            color: #7f8c8d;
-            margin-bottom: 15px;
-        }
+  /* ---------- TOP BAR ---------- */
+  .topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 0 18px;
+    border-bottom:1.5px solid var(--ink);
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+  }
+  .topbar .dot{
+    display:inline-block;
+    width:8px; height:8px;
+    background:var(--terracotta);
+    border-radius:50%;
+    margin-right:8px;
+    transform:translateY(1px);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1; transform:translateY(1px) scale(1)}
+    50%{opacity:.45; transform:translateY(1px) scale(.85)}
+  }
 
-        .header .year {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #e74c3c;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:90px 0 60px;
+    position:relative;
+  }
+  .hero-eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    color:var(--green);
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:36px;
+  }
+  .hero-eyebrow::before{
+    content:"";
+    width:48px; height:1.5px;
+    background:var(--green);
+  }
+  .hero h1{
+    font-family:'Fraunces',serif;
+    font-weight:400;
+    font-size:clamp(60px, 11.5vw, 184px);
+    line-height:.88;
+    letter-spacing:-.045em;
+    font-variation-settings:"SOFT" 80, "opsz" 144;
+    margin-bottom:0;
+  }
+  .hero h1 .ital{
+    font-style:italic;
+    font-weight:300;
+    color:var(--green);
+  }
+  .hero h1 .heavy{
+    font-weight:700;
+    color:var(--terracotta);
+    font-style:normal;
+  }
+  .hero-meta{
+    margin-top:48px;
+    padding-top:28px;
+    border-top:1.5px solid var(--ink);
+    display:grid;
+    grid-template-columns:1.1fr 1fr auto;
+    gap:48px;
+    align-items:end;
+  }
+  .hero-meta p{
+    max-width:520px;
+    font-size:17px;
+    line-height:1.55;
+    color:rgba(27,31,21,.82);
+  }
+  .hero-meta .label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.2em;
+    margin-bottom:6px;
+    color:rgba(27,31,21,.55);
+  }
+  .hero-year{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:108px;
+    line-height:.82;
+    letter-spacing:-.045em;
+    color:var(--ink);
+    text-align:right;
+  }
+  .hero-year sup{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:.18em;
+    vertical-align:top;
+    color:var(--terracotta);
+    margin-left:6px;
+  }
 
-        .category {
-            background: rgba(255, 255, 255, 0.95);
-            margin-bottom: 40px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+  /* decorative wavy field divider */
+  .field{
+    width:100%;
+    height:34px;
+    margin:64px 0 24px;
+    color:var(--green);
+    opacity:.55;
+  }
 
-        .category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        }
+  /* ---------- CATEGORY ---------- */
+  .category{
+    margin-top:80px;
+    position:relative;
+  }
+  .cat-head{
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    gap:32px;
+    align-items:baseline;
+    padding-bottom:22px;
+    border-bottom:1.5px solid var(--ink);
+  }
+  .cat-num{
+    font-family:'Fraunces',serif;
+    font-weight:300;
+    font-style:italic;
+    font-size:84px;
+    line-height:1;
+    color:var(--terracotta);
+    letter-spacing:-.04em;
+  }
+  .cat-title{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(22px,2.4vw,32px);
+    line-height:1.1;
+    letter-spacing:-.015em;
+  }
+  .cat-title .em{
+    font-style:italic;
+    color:var(--green);
+    font-weight:400;
+  }
+  .cat-count{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    white-space:nowrap;
+    background:var(--ink);
+    color:var(--paper);
+    padding:8px 14px;
+    border-radius:999px;
+  }
+  .cat-desc{
+    max-width:780px;
+    font-size:15px;
+    line-height:1.65;
+    margin:24px 0 64px 116px;
+    color:rgba(27,31,21,.78);
+  }
 
-        .category-header {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 25px 30px;
-            font-size: 1.4rem;
-            font-weight: 600;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
+  /* ---------- PROJECT ---------- */
+  .project{
+    display:grid;
+    grid-template-columns:1fr 640px;
+    gap:64px;
+    align-items:start;
+    margin-bottom:88px;
+    padding-bottom:88px;
+    border-bottom:1px dashed rgba(27,31,21,.28);
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .project.in{opacity:1; transform:none}
+  .project:last-child{border-bottom:none; padding-bottom:0; margin-bottom:32px}
 
-        .category-description {
-            padding: 20px 30px;
-            background: rgba(52, 152, 219, 0.1);
-            font-size: 1rem;
-            color: #2c3e50;
-            border-bottom: 1px solid rgba(52, 152, 219, 0.2);
-        }
+  .project-info{
+    position:sticky;
+    top:32px;
+  }
+  .project-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--green);
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .project-num::before{
+    content:"";
+    width:10px; height:10px;
+    background:var(--ochre);
+    transform:rotate(45deg);
+  }
+  .project-name{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(28px,3vw,42px);
+    line-height:1.02;
+    letter-spacing:-.025em;
+    margin-bottom:14px;
+  }
+  .project-class{
+    display:inline-block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    padding:7px 14px;
+    border:1.5px solid var(--ink);
+    border-radius:999px;
+    margin-bottom:32px;
+  }
 
-        .projects-grid {
-            padding: 30px;
-        }
+  .instructions{
+    background:var(--green-deep);
+    color:var(--paper);
+    padding:26px 28px 24px;
+    border-radius:6px;
+    position:relative;
+    overflow:hidden;
+  }
+  .instructions::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:4px;
+    background:linear-gradient(90deg, var(--terracotta) 0 33%, var(--ochre) 33% 66%, var(--paper) 66% 100%);
+  }
+  .instructions h3{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:.22em;
+    margin-bottom:16px;
+    color:var(--ochre);
+  }
+  .instructions p{
+    font-size:14.5px;
+    line-height:1.55;
+    margin-bottom:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-weight:400;
+  }
+  .instructions p:last-child{margin-bottom:0}
+  .instructions strong{color:var(--ochre); font-weight:700}
 
-        .project {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(102, 126, 234, 0.1);
-        }
+  /* embed */
+  .embed{
+    background:var(--ink);
+    padding:14px;
+    border-radius:6px;
+    position:relative;
+    box-shadow:
+      8px 8px 0 var(--terracotta),
+      8px 8px 0 1px var(--ink);
+    transition:box-shadow .25s ease, transform .25s ease;
+  }
+  .embed:hover{
+    transform:translate(-2px,-2px);
+    box-shadow:
+      10px 10px 0 var(--terracotta),
+      10px 10px 0 1px var(--ink);
+  }
+  .embed-tag{
+    position:absolute;
+    top:-13px; left:18px;
+    background:var(--terracotta);
+    color:var(--paper);
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.22em;
+    padding:5px 11px;
+    border-radius:3px;
+    z-index:2;
+  }
+  .embed-tag::before{
+    content:"▶ ";
+    color:var(--paper);
+  }
+  .embed iframe{
+    display:block;
+    width:100%;
+    height:450px;
+    border:none;
+    background:#fff;
+    border-radius:2px;
+  }
 
-        .project:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-            border-color: #667eea;
-        }
+  /* ---------- FOOTER ---------- */
+  footer{
+    margin-top:120px;
+    padding-top:40px;
+    border-top:1.5px solid var(--ink);
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:48px;
+    align-items:end;
+  }
+  footer h2{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(32px,4.4vw,60px);
+    line-height:.98;
+    letter-spacing:-.025em;
+  }
+  footer h2 .accent{
+    color:var(--terracotta);
+    font-style:normal;
+    font-weight:600;
+  }
+  footer .meta-block{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    line-height:1.9;
+    text-align:right;
+    color:rgba(27,31,21,.7);
+  }
+  footer .meta-block .strong{
+    color:var(--ink);
+    display:block;
+    margin-bottom:4px;
+  }
 
-        .project:last-child {
-            margin-bottom: 0;
-        }
+  .colophon{
+    margin-top:32px;
+    padding-top:18px;
+    border-top:1px dashed rgba(27,31,21,.3);
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:rgba(27,31,21,.55);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
 
-        .student-info {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #ecf0f1;
-        }
-
-        .student-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-
-        .instructions {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
-        }
-
-        .instructions h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .instructions p {
-            margin: 5px 0;
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
-
-        .project-embed {
-            text-align: center;
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px dashed #dee2e6;
-        }
-
-        .project-embed iframe {
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 600px;
-            height: 450px;
-            min-width: 500px;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer p {
-            color: #7f8c8d;
-            font-size: 1rem;
-        }
-
-        .badge {
-            display: inline-block;
-            background: linear-gradient(45deg, #e74c3c, #c0392b);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-left: 10px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-
-            .header h1 {
-                font-size: 2.2rem;
-            }
-
-            .header .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .header .year {
-                font-size: 1.5rem;
-            }
-
-            .category-header {
-                font-size: 1.2rem;
-                padding: 20px 25px;
-            }
-
-            .category-description {
-                padding: 15px 25px;
-                font-size: 0.95rem;
-            }
-
-            .projects-grid {
-                padding: 20px;
-            }
-
-            .project {
-                padding: 20px;
-            }
-
-            .student-name {
-                font-size: 1.2rem;
-            }
-
-            .project-embed iframe {
-                width: 100%;
-                min-width: 320px;
-                max-width: 500px;
-                height: 380px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header {
-                padding: 25px 20px;
-            }
-
-            .header h1 {
-                font-size: 1.8rem;
-            }
-
-            .project-embed iframe {
-                min-width: 300px;
-                max-width: 100%;
-                height: 320px;
-            }
-        }
-
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-left: 10px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:1080px){
+    .project{grid-template-columns:1fr; gap:36px}
+    .project-info{position:static}
+  }
+  @media(max-width:760px){
+    .frame{padding:18px 22px 60px}
+    .topbar{font-size:10px; flex-wrap:wrap; gap:8px}
+    .hero{padding:48px 0 32px}
+    .hero h1{font-size:clamp(48px,14vw,108px)}
+    .hero-meta{grid-template-columns:1fr; gap:24px}
+    .hero-year{text-align:left; font-size:78px}
+    .cat-head{grid-template-columns:1fr; gap:12px}
+    .cat-num{font-size:64px}
+    .cat-desc{margin-left:0}
+    .project-name{font-size:30px}
+    .embed iframe{height:380px}
+    .embed{box-shadow:6px 6px 0 var(--terracotta), 6px 6px 0 1px var(--ink)}
+    footer{grid-template-columns:1fr}
+    footer .meta-block{text-align:left}
+  }
+  @media(max-width:420px){
+    .embed iframe{height:320px}
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>🏆 Agrinho</h1>
-            <p class="subtitle">Projetos Selecionados - Categoria Programação</p>
-            <p class="year">2025</p>
-        </header>
+  <div class="frame">
 
-        <main>
-            <section class="category">
-                <div class="category-header">
-                    📚 Subcategoria 1: Linguagem Scratch (6º e 7º anos)
-                    <span class="badge">1 Projeto</span>
-                </div>
-                <div class="category-description">
-                    Direcionada a estudantes matriculados na unidade curricular de Programação e Robótica de 6° e 7° anos do Ensino Fundamental das Escolas em Tempo Integral e Colégios Cívico-Militares e estudantes do 6º e 7º anos do Ensino Fundamental matriculados no Programa de Ampliação de Jornada - Programa Edutech/Games e Programação.
-                </div>
-                <div class="projects-grid">
-                    <div class="project">
-                        <div class="student-info">
-                            <div class="student-name">👩‍💻 LORENA DE OLIVEIRA TOMAZ</div>
-                            <div class="student-class">7º Ano B</div>
-                        </div>
-                        <div class="instructions">
-                            <h3>🎮 Instruções</h3>
-                            <p>>>> Use as teclas A e D do teclado para mover o personagem lateralmente e coletar as melâncias.</p>
-                        </div>
-                        <div class="project-embed">
-                            <iframe src="https://scratch.mit.edu/projects/1189736707/embed" 
-                                    allowtransparency="true" 
-                                    width="600" 
-                                    height="450" 
-                                    frameborder="0" 
-                                    scrolling="no" 
-                                    allowfullscreen
-                                    title="Projeto Scratch - Lorena de Oliveira Tomaz">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="category">
-                <div class="category-header">
-                    🎮 Subcategoria 2: Linguagem Scratch (8º e 9º anos)
-                    <span class="badge">3 Projetos</span>
-                </div>
-                <div class="category-description">
-                    Direcionada a estudantes matriculados na unidade curricular de Programação e Robótica de 8º e 9º anos do Ensino Fundamental das Escolas em Tempo Integral e dos Colégios Cívico-Militares e estudantes matriculados em Pensamento Computacional do 8º ano do Ensino Fundamental Regular.
-                </div>
-                <div class="projects-grid">
-                    <div class="project">
-                        <div class="student-info">
-                            <div class="student-name">👨‍💻 MATHEUS LAIDANE RODRIGUES ANTUNES</div>
-                            <div class="student-class">8º Ano A</div>
-                        </div>
-                        <div class="instructions">
-                            <h3>🎮 Instruções</h3>
-                            <p>>>> Use as setas do teclado para mover o personagem lateralmente e coletar as frutas.</p>
-                            <p>>>> Ao final, uma pergunta será apresentada. Clique na resposta correta para avançar. Caso erre, tente novamente!</p>
-                        </div>
-                        <div class="project-embed">
-                            <iframe src="https://scratch.mit.edu/projects/1177486797/embed" 
-                                    allowtransparency="true" 
-                                    width="600" 
-                                    height="450" 
-                                    frameborder="0" 
-                                    scrolling="no" 
-                                    allowfullscreen
-                                    title="Projeto Scratch - Matheus Laidane Rodrigues Antunes">
-                            </iframe>
-                        </div>
-                    </div>
-
-                    <div class="project">
-                        <div class="student-info">
-                            <div class="student-name">👩‍💻 RENATA LIMA DA SILVA</div>
-                            <div class="student-class">8º Ano B</div>
-                        </div>
-                        <div class="instructions">
-                            <h3>🎮 Instruções</h3>
-                            <p>>>> Use as setas do teclado para mover o personagem e coletar as frutas.</p>
-                        </div>
-                        <div class="project-embed">
-                            <iframe src="https://scratch.mit.edu/projects/1175162178/embed" 
-                                    allowtransparency="true" 
-                                    width="600" 
-                                    height="450" 
-                                    frameborder="0" 
-                                    scrolling="no" 
-                                    allowfullscreen
-                                    title="Projeto Scratch - Renata Lima da Silva">
-                            </iframe>
-                        </div>
-                    </div>
-
-                    <div class="project">
-                        <div class="student-info">
-                            <div class="student-name">👨‍💻 EMMANUEL MELLO MENDES</div>
-                            <div class="student-class">9º Ano C</div>
-                        </div>
-                        <div class="instructions">
-                            <h3>🎮 Instruções</h3>
-                            <p>>>> Use as setas do teclado ou as teclas W, A, S, D para movimentar o personagem.</p>
-                            <p>>>> Pressione a tecla E para interagir com objetos ou personagens durante o jogo.</p>
-                        </div>
-                        <div class="project-embed">
-                            <iframe src="https://scratch.mit.edu/projects/1175732831/embed" 
-                                    allowtransparency="true" 
-                                    width="600" 
-                                    height="450" 
-                                    frameborder="0" 
-                                    scrolling="no" 
-                                    allowfullscreen
-                                    title="Projeto Scratch - Emmanuel Mello Mendes">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <p>🌟 Parabéns a todos os estudantes selecionados! Continuem programando e criando! 🌟</p>
-            <p style="margin-top: 10px; font-size: 0.9rem;">Agrinho 2025 - Categoria Programação</p>
-        </footer>
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <span><span class="dot"></span>Catálogo · Edição 2025</span>
+      <span>Programa Agrinho · Paraná</span>
+      <span>Vol. I / IV</span>
     </div>
 
-    <script>
-        // Adiciona animação suave ao carregar a página
-        document.addEventListener('DOMContentLoaded', function() {
-            const projects = document.querySelectorAll('.project');
-            projects.forEach((project, index) => {
-                project.style.opacity = '0';
-                project.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    project.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                    project.style.opacity = '1';
-                    project.style.transform = 'translateY(0)';
-                }, index * 200);
-            });
-        });
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-eyebrow">Categoria Programação · Selecionados</div>
+      <h1>
+        <span class="ital">Agri</span><span class="heavy">nho</span>
+      </h1>
+      <div class="hero-meta">
+        <div>
+          <div class="label">Sobre esta edição</div>
+          <p>Uma seleção dos projetos desenvolvidos por estudantes do Ensino Fundamental nas linguagens Scratch e correlatas, dentro das unidades curriculares de Programação, Robótica e Pensamento Computacional.</p>
+        </div>
+        <div>
+          <div class="label">Categorias</div>
+          <p style="font-family:'Fraunces',serif; font-size:22px; line-height:1.2; font-weight:500;">
+            Linguagem Scratch <em style="color:var(--green); font-weight:400;">— 6º ao 9º ano</em>
+          </p>
+        </div>
+        <div class="hero-year">2025<sup>ED.</sup></div>
+      </div>
 
-        // Adiciona loading para iframes
-        document.querySelectorAll('iframe').forEach(iframe => {
-            iframe.addEventListener('load', function() {
-                this.style.opacity = '1';
-            });
-            iframe.style.opacity = '0.7';
-            iframe.style.transition = 'opacity 0.3s ease';
-        });
-    </script>
+      <!-- decorative field rows -->
+      <svg class="field" viewBox="0 0 1200 34" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 6 Q 150 0 300 6 T 600 6 T 900 6 T 1200 6" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M0 14 Q 150 8 300 14 T 600 14 T 900 14 T 1200 14" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M0 22 Q 150 16 300 22 T 600 22 T 900 22 T 1200 22" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M0 30 Q 150 24 300 30 T 600 30 T 900 30 T 1200 30" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+    </header>
+
+    <main>
+      <!-- ============ CATEGORY 01 ============ -->
+      <section class="category" id="cat-01">
+        <div class="cat-head">
+          <div class="cat-num">01</div>
+          <h2 class="cat-title">Linguagem Scratch <span class="em">/ 6º e 7º anos</span></h2>
+          <span class="cat-count">01 Projeto</span>
+        </div>
+        <p class="cat-desc">Direcionada a estudantes matriculados na unidade curricular de Programação e Robótica de 6° e 7° anos do Ensino Fundamental das Escolas em Tempo Integral e Colégios Cívico-Militares, e estudantes do 6º e 7º anos do Ensino Fundamental matriculados no Programa de Ampliação de Jornada — Programa Edutech / Games e Programação.</p>
+
+        <article class="project">
+          <div class="project-info">
+            <div class="project-num">Projeto № 001</div>
+            <h3 class="project-name">Lorena de Oliveira Tomaz</h3>
+            <span class="project-class">7º ano · turma B</span>
+            <div class="instructions">
+              <h3>Como Jogar</h3>
+              <p>Use as teclas <strong>A</strong> e <strong>D</strong> do teclado para mover o personagem lateralmente e coletar as melâncias.</p>
+            </div>
+          </div>
+          <div class="embed">
+            <span class="embed-tag">JOGAR</span>
+            <iframe src="https://scratch.mit.edu/projects/1189736707/embed"
+                    allowtransparency="true"
+                    frameborder="0"
+                    scrolling="no"
+                    allowfullscreen
+                    title="Projeto Scratch — Lorena de Oliveira Tomaz"
+                    loading="lazy"></iframe>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============ CATEGORY 02 ============ -->
+      <section class="category" id="cat-02">
+        <div class="cat-head">
+          <div class="cat-num">02</div>
+          <h2 class="cat-title">Linguagem Scratch <span class="em">/ 8º e 9º anos</span></h2>
+          <span class="cat-count">03 Projetos</span>
+        </div>
+        <p class="cat-desc">Direcionada a estudantes matriculados na unidade curricular de Programação e Robótica de 8º e 9º anos do Ensino Fundamental das Escolas em Tempo Integral e dos Colégios Cívico-Militares, e estudantes matriculados em Pensamento Computacional do 8º ano do Ensino Fundamental Regular.</p>
+
+        <article class="project">
+          <div class="project-info">
+            <div class="project-num">Projeto № 002</div>
+            <h3 class="project-name">Matheus Laidane Rodrigues Antunes</h3>
+            <span class="project-class">8º ano · turma A</span>
+            <div class="instructions">
+              <h3>Como Jogar</h3>
+              <p>Use as <strong>setas do teclado</strong> para mover o personagem lateralmente e coletar as frutas.</p>
+              <p>Ao final, uma pergunta será apresentada. Clique na resposta correta para avançar — caso erre, tente novamente!</p>
+            </div>
+          </div>
+          <div class="embed">
+            <span class="embed-tag">JOGAR</span>
+            <iframe src="https://scratch.mit.edu/projects/1177486797/embed"
+                    allowtransparency="true"
+                    frameborder="0"
+                    scrolling="no"
+                    allowfullscreen
+                    title="Projeto Scratch — Matheus Laidane Rodrigues Antunes"
+                    loading="lazy"></iframe>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-info">
+            <div class="project-num">Projeto № 003</div>
+            <h3 class="project-name">Renata Lima da Silva</h3>
+            <span class="project-class">8º ano · turma B</span>
+            <div class="instructions">
+              <h3>Como Jogar</h3>
+              <p>Use as <strong>setas do teclado</strong> para mover o personagem e coletar as frutas.</p>
+            </div>
+          </div>
+          <div class="embed">
+            <span class="embed-tag">JOGAR</span>
+            <iframe src="https://scratch.mit.edu/projects/1175162178/embed"
+                    allowtransparency="true"
+                    frameborder="0"
+                    scrolling="no"
+                    allowfullscreen
+                    title="Projeto Scratch — Renata Lima da Silva"
+                    loading="lazy"></iframe>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-info">
+            <div class="project-num">Projeto № 004</div>
+            <h3 class="project-name">Emmanuel Mello Mendes</h3>
+            <span class="project-class">9º ano · turma C</span>
+            <div class="instructions">
+              <h3>Como Jogar</h3>
+              <p>Use as <strong>setas do teclado</strong> ou as teclas <strong>W A S D</strong> para movimentar o personagem.</p>
+              <p>Pressione a tecla <strong>E</strong> para interagir com objetos ou personagens durante o jogo.</p>
+            </div>
+          </div>
+          <div class="embed">
+            <span class="embed-tag">JOGAR</span>
+            <iframe src="https://scratch.mit.edu/projects/1175732831/embed"
+                    allowtransparency="true"
+                    frameborder="0"
+                    scrolling="no"
+                    allowfullscreen
+                    title="Projeto Scratch — Emmanuel Mello Mendes"
+                    loading="lazy"></iframe>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <h2>Parabéns aos<br>estudantes <span class="accent">selecionados.</span><br>Continuem programando.</h2>
+      <div class="meta-block">
+        <span class="strong">Agrinho · 2025</span>
+        Categoria Programação<br>
+        Rede Estadual SEED · PR<br>
+        04 Projetos / 02 Categorias
+      </div>
+      <div class="colophon" style="grid-column:1 / -1;">
+        <span>Composto em Fraunces, Manrope &amp; JetBrains Mono</span>
+        <span>※ Hospedado via GitHub Pages</span>
+      </div>
+    </footer>
+
+  </div>
+
+<script>
+  // reveal projects on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.project').forEach(p=>io.observe(p));
+</script>
 </body>
 </html>
